@@ -33,9 +33,8 @@ int main(int argc, char **argv)
     teca_system_interface::set_stack_trace_on_error();
     teca_system_interface::set_stack_trace_on_mpi_error();
 
-    // initialize comand line options description
-    // set up some comon options to simplify use for most
-    // comon scenarios
+    // initialize comand line options description set up some comon options to
+    // simplify use for most comon scenarios
     options_description basic_opt_defs(
         "Basic usage:\n\n"
         "The following options are the most comonly used. Information\n"
@@ -44,22 +43,24 @@ int main(int argc, char **argv)
         );
     basic_opt_defs.add_options()
 
-        ("input_file", value<std::string>(), "multi_cf_reader configuration file identifying"
-            " simulation files tracks were generated from. when present data is read using"
-            " the multi_cf_reader. use one of either --input_file or --input_regex.")
+        ("input_file", value<std::string>(), "a teca_multi_cf_reader configuration file"
+            " identifying the set of NetCDF CF2 files to process. When present data is"
+            " read using the teca_multi_cf_reader. Use one of either --input_file or"
+            " --input_regex.")
 
-        ("input_regex", value<std::string>(), "cf_reader regex identyifying simulation files"
-            " tracks were generated from. when present data is read using the cf_reader. use"
-            " one of either --input_file or --input_regex.")
+        ("input_regex", value<std::string>(), "a teca_cf_reader regex identyifying the"
+            " set of NetCDF CF2 files to process. When present data is read using the"
+            " teca_cf_reader. Use one of either --input_file or --input_regex.")
 
         ("x_axis", value<std::string>(), "name of x coordinate variable (lon)")
         ("y_axis", value<std::string>(), "name of y coordinate variable (lat)")
         ("z_axis", value<std::string>(), "name of z coordinate variable ()."
-            " When processing 3D set this to the variable containing vertical coordinates."
-            " When empty the data will be treated as 2D.")
+            " When processing 3D set this to the variable containing vertical"
+            " coordinates. When empty the data will be treated as 2D.")
 
-        ("start_date", value<std::string>(), "first time to proces in Y-M-D h:m:s format")
-        ("end_date", value<std::string>(), "first time to proces in Y-M-D h:m:s format")
+        ("start_date", value<std::string>(), "The first time to process in 'Y-M-D h:m:s'"
+            " format. Note: There must be a space between the date and time specification")
+        ("end_date", value<std::string>(), "The last time to process in 'Y-M-D h:m:s' format")
         ("help", "display the basic options help")
         ("advanced_help", "display the advanced options help")
         ("full_help", "display all options help")
