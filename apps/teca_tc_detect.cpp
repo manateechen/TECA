@@ -46,13 +46,14 @@ int main(int argc, char **argv)
         "Basic command line options", 120, -1
         );
     basic_opt_defs.add_options()
-        ("input_file", value<string>(), "multi_cf_reader configuration file identifying simulation"
-            " files to search for atmospheric rivers. when present data is read using the"
-            " multi_cf_reader. use one of either --input_file or --input_regex.")
+        ("input_file", value<std::string>(), "a teca_multi_cf_reader configuration file"
+            " identifying the set of NetCDF CF2 files to process. When present data is"
+            " read using the teca_multi_cf_reader. Use one of either --input_file or"
+            " --input_regex.")
 
-        ("input_regex", value<string>(), "cf_reader regex identyifying simulation files to search"
-            " for atmospheric rivers. when present data is read using the"
-            " cf_reader. use one of either --input_file or --input_regex.")
+        ("input_regex", value<std::string>(), "a teca_cf_reader regex identyifying the"
+            " set of NetCDF CF2 files to process. When present data is read using the"
+            " teca_cf_reader. Use one of either --input_file or --input_regex.")
 
         ("candidate_file", value<string>(), "file path to write the storm candidates to (candidates.bin)")
         ("850mb_wind_u", value<string>(), "name of variable with 850 mb wind x-component (U850)")
