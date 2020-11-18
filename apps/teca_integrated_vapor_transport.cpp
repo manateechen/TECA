@@ -40,13 +40,14 @@ int main(int argc, char **argv)
         "Basic command line options", 120, -1
         );
     basic_opt_defs.add_options()
-        ("input_file", value<string>(), "multi_cf_reader configuration file identifying simulation"
-            " files to search for atmospheric rivers. when present data is read using the"
-            " multi_cf_reader. use one of either --input_file or --input_regex.")
+        ("input_file", value<std::string>(), "a teca_multi_cf_reader configuration file"
+            " identifying the set of NetCDF CF2 files to process. When present data is"
+            " read using the teca_multi_cf_reader. Use one of either --input_file or"
+            " --input_regex.")
 
-        ("input_regex", value<string>(), "cf_reader regex identyifying simulation files to search"
-            " for atmospheric rivers. when present data is read using the"
-            " cf_reader. use one of either --input_file or --input_regex.")
+        ("input_regex", value<std::string>(), "a teca_cf_reader regex identyifying the"
+            " set of NetCDF CF2 files to process. When present data is read using the"
+            " teca_cf_reader. Use one of either --input_file or --input_regex.")
 
         ("specific_humidity", value<string>(),
             "name of variable with the 3D specific humidity field. (Q)")
@@ -93,8 +94,11 @@ int main(int argc, char **argv)
 
         ("first_step", value<long>(), "first time step to process")
         ("last_step", value<long>(), "last time step to process")
-        ("start_date", value<string>(), "first time to proces in YYYY-MM-DD hh:mm:ss format")
-        ("end_date", value<string>(), "first time to proces in YYYY-MM-DD hh:mm:ss format")
+
+        ("start_date", value<std::string>(), "The first time to process in 'Y-M-D h:m:s'"
+            " format. Note: There must be a space between the date and time specification")
+        ("end_date", value<std::string>(), "The last time to process in 'Y-M-D h:m:s' format")
+
         ("n_threads", value<int>(), "thread pool size. default is -1. -1 for all")
         ("verbose", "enable extra terminal output")
 
